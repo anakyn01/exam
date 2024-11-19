@@ -1,0 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="java.io.PrintWriter, community.*"%>
+<% request.setCharacterEncoding("utf-8"); %>
+<%
+int idx = 0;
+if(request.getParameter("idx") != null){
+	idx = Integer.parseInt(request.getParameter("idx"));
+}
+if(idx == 0){
+	PrintWriter script = response.getWriter();
+	script.println("<script>");
+	script.println("alert('아영이 너에 오타')");
+	script.println("locattion.href='index.jsp'");
+	script.println("</script>");
+}
+Board board = new BoardDAO().getBoard(idx);
+if(request.getParameter("boardSubject")==null || request.getParameter("boardContent") == null
+|| request.getParameter("boardSubject").equals("") || request.getParameter("boardContent").equals("")
+		){
+	
+}
+
+
+
+
+
+
+%>
