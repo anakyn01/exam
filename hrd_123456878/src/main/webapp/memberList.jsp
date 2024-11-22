@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.io.PrintWriter, member.*, java.util.ArrayList"%>
 <jsp:include page="include/header.jsp" flush="false"/>
 
 
@@ -17,6 +17,7 @@
 <col style="width:10%"/>
 <col style="width:10%"/>
 </colgroup>
+<thead>
 <tr>
 <td class="text-center">
 회원번호
@@ -40,6 +41,25 @@
 거주지역
 </td>
 </tr>
+</thead>
+<tbody>
+<%
+MemberDAO memberDAO = new MemberDAO();//실제 사용객체 (인스턴스) 생성
+ArrayList<Member> list = memberDAO.getList();
+for (int i=0; i < list.size(); i++){
+%>
+<tr>
+<td><%=list.get(i).getCustno()%></td>
+<td><%=list.get(i).getCustname() %></td>
+<td><%=list.get(i).getPhone() %></td>
+<td><%=list.get(i).getAddress() %></td>
+<td><%=list.get(i).getJoindate() %></td>
+<td><%=list.get(i).getGrade() %></td>
+<td><%=list.get(i).getCity() %></td>
+</tr>
+<%}%>
+</tbody>
+
 
 </table>
 </form>
