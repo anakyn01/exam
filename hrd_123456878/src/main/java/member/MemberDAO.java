@@ -11,7 +11,7 @@ public class MemberDAO {
 	private Connection conn;
 	private ResultSet rs;
 	
-	//생성자
+	//�깮�꽦�옄
 	public MemberDAO() {
 		try {
 			String dbURL = "jdbc:oracle:thin:@localhost:1521/xe";
@@ -24,7 +24,7 @@ public class MemberDAO {
 		}
 	}
 	
-	//시간
+	//�떆媛�
 	public String getDate() {
 		String sql = "select sysdate from MEMBER_TBL_02";
 		try {
@@ -39,11 +39,11 @@ public class MemberDAO {
 		return "";
 	}
 	
-	//글의 순번
+	//湲��쓽 �닚踰�
 	public int getNext() {
 		int num = 0;
 		String sql = "select MEMBER_SEQ.NEXTVAL from dual";
-		//NEXTVAL => 시퀀스 값 증가 현재 시퀀스 값 => CURRVAL
+		//NEXTVAL => �떆���뒪 媛� 利앷� �쁽�옱 �떆���뒪 媛� => CURRVAL
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -64,7 +64,7 @@ public class MemberDAO {
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-			while (rs.next()) {//들어가는 항목에 순번으로 표기
+			while (rs.next()) {//�뱾�뼱媛��뒗 �빆紐⑹뿉 �닚踰덉쑝濡� �몴湲�
 				Member member = new Member();
 				member.setCustno(rs.getInt(1));
 				member.setCustname(rs.getString(2));
@@ -81,10 +81,17 @@ public class MemberDAO {
 		return list;
 	}
 	
-	public int write() {
-		String sql = "";
+	public int write(String custname, String phone, String address, String grade, String city ) {
+		String sql = "insert into MEMBER_TBL_02 values (?, ?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, getNext() + 1);
+			pstmt.setString(2, custname);
+			pstmt.setString(3, phone);
+			pstmt.setString(4, address);
+			pstmt.setString(5, getDate());
+			pstmt.setString(6, grade);
+			pstmt.setString(7, city);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
