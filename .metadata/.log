@@ -379,3 +379,30 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.eclipse.jst.server.tomcat.core 1 0 2024-11-26 15:38:05.823
 !MESSAGE Skipping argument '-Djava.endorsed.dirs=E:\dev\was\apache-tomcat-9.0.69\endorsed' while launching Tomcat v9.0 Server at localhost
+
+!ENTRY org.eclipse.jst.server.tomcat.core 1 0 2024-11-26 16:12:14.217
+!MESSAGE Skipping argument '-Djava.endorsed.dirs=E:\dev\was\apache-tomcat-9.0.69\endorsed' while launching Tomcat v9.0 Server at localhost
+
+!ENTRY org.eclipse.jst.server.tomcat.core 1 0 2024-11-26 16:12:15.693
+!MESSAGE Skipping argument '-Djava.endorsed.dirs=E:\dev\was\apache-tomcat-9.0.69\endorsed' while launching Tomcat v9.0 Server at localhost
+
+!ENTRY org.eclipse.jst.server.tomcat.core 1 0 2024-11-26 16:24:25.801
+!MESSAGE Skipping argument '-Djava.endorsed.dirs=E:\dev\was\apache-tomcat-9.0.69\endorsed' while launching Tomcat v9.0 Server at localhost
+
+!ENTRY org.eclipse.jst.server.tomcat.core 1 0 2024-11-26 16:26:27.707
+!MESSAGE Skipping argument '-Djava.endorsed.dirs=E:\dev\was\apache-tomcat-9.0.69\endorsed' while launching Tomcat v9.0 Server at localhost
+
+!ENTRY org.eclipse.jst.server.tomcat.core 1 0 2024-11-26 16:26:29.209
+!MESSAGE Skipping argument '-Djava.endorsed.dirs=E:\dev\was\apache-tomcat-9.0.69\endorsed' while launching Tomcat v9.0 Server at localhost
+
+!ENTRY org.eclipse.jst.server.tomcat.core 1 0 2024-11-26 16:38:29.668
+!MESSAGE Skipping argument '-Djava.endorsed.dirs=E:\dev\was\apache-tomcat-9.0.69\endorsed' while launching Tomcat v9.0 Server at localhost
+
+!ENTRY org.eclipse.jst.server.tomcat.core 1 0 2024-11-26 16:38:31.263
+!MESSAGE Skipping argument '-Djava.endorsed.dirs=E:\dev\was\apache-tomcat-9.0.69\endorsed' while launching Tomcat v9.0 Server at localhost
+
+!ENTRY org.eclipse.jst.server.tomcat.core 1 0 2024-11-26 17:05:40.731
+!MESSAGE Skipping argument '-Djava.endorsed.dirs=E:\dev\was\apache-tomcat-9.0.69\endorsed' while launching Tomcat v9.0 Server at localhost
+
+!ENTRY org.eclipse.jst.server.tomcat.core 1 0 2024-11-26 17:05:42.624
+!MESSAGE Skipping argument '-Djava.endorsed.dirs=E:\dev\was\apache-tomcat-9.0.69\endorsed' while launching Tomcat v9.0 Server at localhost

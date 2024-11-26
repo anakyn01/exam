@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"
 import ="member.*, java.io.PrintWriter"
 %>
+<% request.setCharacterEncoding("UTF-8"); %>
 <jsp:useBean id="member" class="member.Member" scope="page"/>
 <jsp:setProperty name="member" property="custno"/>
 <jsp:setProperty name="member" property="custname"/>
@@ -26,7 +27,8 @@ if(member.getCustname() == null || member.getPhone() == null || member.getAddres
 	member.setGrade(request.getParameter("grade"));
 	member.setCity(request.getParameter("city"));
 	
-	int result = memberDAO.write(member.getCustname(), member.getPhone(),member.getAddress(),member.getGrade(),member.getCity());
+	
+	int result = memberDAO.write(member.getCustname(), member.getPhone(), member.getAddress(), member.getGrade(), member.getCity());
 	
 	//데이터 베이스 오류
 	if(result == -1){

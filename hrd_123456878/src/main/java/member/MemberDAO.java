@@ -82,22 +82,38 @@ public class MemberDAO {
 	}
 	
 	public int write(String custname, String phone, String address, String grade, String city ) {
-		String sql = "insert into MEMBER_TBL_02 values (?, ?, ?, ?, ?, ?, ?)";
+		String sql = "insert into member_tbl_02 values(?,?,?,?,to_char(to_date(?,'YYYY-MM-DD hh24:mi:ss'),'YYYY-MM-DD'),?,?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, getNext() + 1);
+			pstmt.setInt(1, getNext());
 			pstmt.setString(2, custname);
 			pstmt.setString(3, phone);
 			pstmt.setString(4, address);
 			pstmt.setString(5, getDate());
 			pstmt.setString(6, grade);
 			pstmt.setString(7, city);
+			return pstmt.executeUpdate();//잊어먹지 말자 리턴 
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		return -1;
 	}
 	
+	public Member getMember(int custno) {
+		String sql="select * from MEMBER_TBL_02 where custno = ?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, custno);
+			if(rs.next()) {
+				Member member = new Member();
+				member.setCustno(rs.getInt(1));
+				return member;
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
 	
 	

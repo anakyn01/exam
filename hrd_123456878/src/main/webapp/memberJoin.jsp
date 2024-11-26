@@ -6,7 +6,7 @@
 <section class="body_color center">
 <div>
 <h1 class="text-center" style="margin-bottom:30px;">홈쇼핑 회원 등록</h1>
-<form method="post" action="writeAction">
+<form method="post" action="writeAction.jsp">
 <table class="table">
 <colgroup>
 <col style="width:30%"/>
@@ -70,7 +70,7 @@
 </tr>
 <tr>
 <td colspan="2" class="text-center">
-<button type="submit">등록</button>
+<input type="submit" value="등록"/>
 <button type="submit">조회</button>
 </td>
 </tr>
