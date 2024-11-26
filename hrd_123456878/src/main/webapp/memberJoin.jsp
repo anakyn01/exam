@@ -6,7 +6,7 @@
 <section class="body_color center">
 <div>
 <h1 class="text-center" style="margin-bottom:30px;">홈쇼핑 회원 등록</h1>
-<form method="post" action="">
+<form method="post" action="writeAction">
 <table class="table">
 <colgroup>
 <col style="width:30%"/>
@@ -17,7 +17,7 @@
 회원번호(자동발행)
 </td>
 <td>
-<input type="text" name="" class="form-control"/>
+<input type="text" name="custno" class="form-control"/>
 </td>
 </tr>
 <tr>
@@ -25,7 +25,7 @@
 회원성명
 </td>
 <td>
-<input type="text" name="" class="form-control"/>
+<input type="text" name="custname" class="form-control"/>
 </td>
 </tr>
 <tr>
@@ -33,7 +33,7 @@
 회원전화
 </td>
 <td>
-<input type="tel" name="" class="form-control"/>
+<input type="text" name="phone" class="form-control"/>
 </td>
 </tr>
 <tr>
@@ -41,7 +41,7 @@
 회원주소
 </td>
 <td>
-<input type="tel" name="" class="form-control"/>
+<input type="text" name="address" class="form-control"/>
 </td>
 </tr>
 <tr>
@@ -49,7 +49,7 @@
 가입일자
 </td>
 <td>
-<input type="tel" name="" class="form-control"/>
+<input type="text" name="joindate" class="form-control"/>
 </td>
 </tr>
 <tr>
@@ -57,7 +57,7 @@
 고객등급(A:VIP,B:일반,C:직원)
 </td>
 <td>
-<input type="tel" name="" class="form-control"/>
+<input type="text" name="grade" class="form-control"/>
 </td>
 </tr>
 <tr>
@@ -65,7 +65,7 @@
 도시코드
 </td>
 <td>
-<input type="tel" name="" class="form-control"/>
+<input type="text" name="city" class="form-control"/>
 </td>
 </tr>
 <tr>

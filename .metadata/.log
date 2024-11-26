@@ -373,3 +373,9 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.eclipse.jst.server.tomcat.core 1 0 2024-11-26 15:05:03.269
 !MESSAGE Skipping argument '-Djava.endorsed.dirs=E:\dev\was\apache-tomcat-9.0.69\endorsed' while launching Tomcat v9.0 Server at localhost
+
+!ENTRY org.eclipse.jst.server.tomcat.core 1 0 2024-11-26 15:38:04.298
+!MESSAGE Skipping argument '-Djava.endorsed.dirs=E:\dev\was\apache-tomcat-9.0.69\endorsed' while launching Tomcat v9.0 Server at localhost
+
+!ENTRY org.eclipse.jst.server.tomcat.core 1 0 2024-11-26 15:38:05.823
+!MESSAGE Skipping argument '-Djava.endorsed.dirs=E:\dev\was\apache-tomcat-9.0.69\endorsed' while launching Tomcat v9.0 Server at localhost
