@@ -49,7 +49,11 @@ ArrayList<Member> list = memberDAO.getList();
 for (int i=0; i < list.size(); i++){
 %>
 <tr>
-<td><%=list.get(i).getCustno()%></td>
+<td>
+<a href="memberEdit.jsp?custno=<%=list.get(i).getCustno()%>">
+<%=list.get(i).getCustno()%>
+</a>
+</td>
 <td><%=list.get(i).getCustname() %></td>
 <td><%=list.get(i).getPhone() %></td>
 <td><%=list.get(i).getAddress() %></td>

@@ -103,10 +103,17 @@ public class MemberDAO {
 		String sql="select * from MEMBER_TBL_02 where custno = ?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, custno);
+			pstmt.setInt(1, custno);//순번으로 글선택
+			rs=pstmt.executeQuery();//잊어먹지 말자 커리
 			if(rs.next()) {
 				Member member = new Member();
 				member.setCustno(rs.getInt(1));
+				member.setCustname(rs.getString(2));
+				member.setPhone(rs.getString(3));
+				member.setAddress(rs.getString(4));
+				member.setJoindate(rs.getDate(5));
+				member.setGrade(rs.getString(6));
+				member.setCity(rs.getString(7));
 				return member;
 			}
 		}catch(Exception e) {
@@ -114,6 +121,44 @@ public class MemberDAO {
 		}
 		return null;
 	}
+	
+	//게시글 수정 메소드
+	public int update(String custname, String phone, String address, String grade, String city) {
+		String sql = "update MEMBER_TBL_02 set custname=?, phone=?, address=?, grade=?, city=? where custno = ?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, custname);
+			pstmt.setString(2, phone);
+			pstmt.setString(3, address);
+			pstmt.setString(4, grade);
+			pstmt.setString(5, city);
+			return pstmt.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
+	
+	//게시글 삭제 메소드
+	public int delete(int custno) {
+		String sql = "delete from MEMBER_TBL_02 where custno = ?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, custno);
+			return pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
