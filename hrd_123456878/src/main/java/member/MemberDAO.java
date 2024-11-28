@@ -123,15 +123,14 @@ public class MemberDAO {
 	}
 	
 	//게시글 수정 메소드
-	public int update(String custname, String phone, String address, String grade, String city) {
-		String sql = "update MEMBER_TBL_02 set custname=?, phone=?, address=?, grade=?, city=? where custno = ?";
+	public int update(String custname, String phone, String address, int custno) {
+		String sql = "update MEMBER_TBL_02 set custname=?, phone=?, address=? where custno = ?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, custname);
 			pstmt.setString(2, phone);
 			pstmt.setString(3, address);
-			pstmt.setString(4, grade);
-			pstmt.setString(5, city);
+			pstmt.setInt(4, custno);
 			return pstmt.executeUpdate();
 		}catch (Exception e) {
 			e.printStackTrace();

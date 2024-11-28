@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>쇼핑몰 회원관리</title>
 <link rel="stylesheet" href="css/custom.css"/>
+<script src="../js/js.js"></script>
 </head>
 <body>
 <header class="header">

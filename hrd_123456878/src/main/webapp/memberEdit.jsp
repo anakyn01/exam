@@ -1,23 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"
-import="java.io.PrintWriter, member.*"%>
+    pageEncoding="UTF-8" import="java.io.PrintWriter, member.*"%>
 <%
 int custno = 0;//초기화
 if(request.getParameter("custno") != null){
-	custno = Integer.parseInt(request.getParameter("custno"));
+   custno = Integer.parseInt(request.getParameter("custno"));   
 }
-Member member = new MemberDAO().getMember(custno);
-//Read매서드인데 다오에서 아직 작성안함
+
+Member mebmer = new MemberDAO().getMember(custno);
 %>
-    
-    
+
+
+
 <jsp:include page="include/header.jsp" flush="false"/>
 
 
 <section class="body_color center">
 <div>
 <h1 class="text-center" style="margin-bottom:30px;">홈쇼핑 회원 등록</h1>
-<form method="post" action="updateAction.jsp?custno=<%=custno%>">
+<form method="post" action="updateAction.jsp">
+<!-- custno, custname, phone, address, joindate, grade, city -->
 <table class="table">
 <colgroup>
 <col style="width:30%"/>
@@ -28,12 +29,8 @@ Member member = new MemberDAO().getMember(custno);
 회원번호
 </td>
 <td>
-<input 
-type="text" 
-name="custno" 
-class="form-control"
-value="<%=member.getCustno() %>"
-/>
+<input type="text" name="custno" class="form-control" value="<%=mebmer.getCustno()%>" hidden=""/>
+<input type="text" class="form-control" value="<%=mebmer.getCustno()%>" disabled="disabled"/>
 </td>
 </tr>
 <tr>
@@ -41,12 +38,7 @@ value="<%=member.getCustno() %>"
 회원성명
 </td>
 <td>
-<input 
-type="text" 
-name="custname" 
-class="form-control"
-value="<%=member.getCustname() %>"
-/>
+<input type="text" name="custname" class="form-control" value="<%=mebmer.getCustname()%>"/>
 </td>
 </tr>
 <tr>
@@ -54,12 +46,7 @@ value="<%=member.getCustname() %>"
 회원전화
 </td>
 <td>
-<input 
-type="text" 
-name="phone" 
-class="form-control"
-value="<%=member.getPhone() %>"
-/>
+<input type="tel" name="phone" class="form-control" value="<%=mebmer.getPhone()%>"/>
 </td>
 </tr>
 <tr>
@@ -67,12 +54,7 @@ value="<%=member.getPhone() %>"
 회원주소
 </td>
 <td>
-<input 
-type="text" 
-name="address" 
-class="form-control"
-value="<%=member.getAddress() %>"
-/>
+<input type="text" name="address" class="form-control" value="<%=mebmer.getAddress()%>"/>
 </td>
 </tr>
 <tr>
@@ -80,12 +62,8 @@ value="<%=member.getAddress() %>"
 가입일자
 </td>
 <td>
-<input 
-type="text" 
-name="joindate" 
-class="form-control"
-value="<%=member.getJoindate() %>"
-/>
+<input type="text" name="joindate" class="form-control"  value="<%=mebmer.getJoindate()%>" hidden="">
+<input type="text" class="form-control"  value="<%=mebmer.getJoindate()%>" disabled="disabled">
 </td>
 </tr>
 <tr>
@@ -93,12 +71,8 @@ value="<%=member.getJoindate() %>"
 고객등급(A:VIP,B:일반,C:직원)
 </td>
 <td>
-<input 
-type="text" 
-name="grade" 
-class="form-control"
-value="<%=member.getGrade() %>"
-/>
+<input type="text" name="grade" class="form-control" value="<%=mebmer.getGrade()%>" hidden=""/>
+<input type="text" class="form-control" value="<%=mebmer.getGrade()%>" disabled="disabled"/>
 </td>
 </tr>
 <tr>
@@ -106,18 +80,13 @@ value="<%=member.getGrade() %>"
 도시코드
 </td>
 <td>
-<input 
-type="text" 
-name="city" 
-class="form-control"
-value="<%=member.getCity() %>"
-disabled="disabled"
-/>
+<input type="text" name="city" class="form-control" value="<%=mebmer.getCity()%>" hidden=""/>
+<input type="text" class="form-control" value="<%=mebmer.getCity()%>" disabled="disabled"/>
 </td>
 </tr>
 <tr>
 <td colspan="2" class="text-center">
-<input type="submit" value="수정"/>
+<input type="submit" value="수정" onclick="edit()"/>
 <button type="submit">조회</button>
 </td>
 </tr>
