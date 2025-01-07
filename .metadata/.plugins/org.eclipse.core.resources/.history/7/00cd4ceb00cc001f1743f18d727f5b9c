@@ -1,0 +1,26 @@
+@charset "UTF-8";
+*{margin:0; padding:0; box-sizing:border-box;}
+a{text-decoration:none; color:#5e5e5e;}
+header{background-color:#8080c0;}
+header h1{padding:40px 0; text-align:center; color:white;}
+nav{height:60px; background-color:#c4c4e1;}
+nav ul{margin:0 auto; width:1320px; list-style:none; text-align:center;}
+nav ul li{line-height:60px; float:left; font-size:18px; font-weight:600; width:200px;
+margin:0 10px;
+}
+section{padding:30px 10px;}
+section h2{text-align:center; margin:30px 0;}
+section p{margin:10px 0;}
+table{margin:0 auto; width:70%; text-align:center;}
+th{color:#3c3c77;}
+th,td{padding:5px 0;}
+input[type="text"]{
+height:28px; border:1px solid gray; padding:0 5px; font-size:16px;	
+}
+input[type="button"]{padding:3px;}
+select{height:28px; padding:0 5px; font-size:16px; }
+footer{text-align:center; background-color:#8080c0;}
+
+
+
+

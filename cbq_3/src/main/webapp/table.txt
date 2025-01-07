@@ -1,0 +1,55 @@
+create table artist (
+a_no varchar2(30) not null primary key,
+a_name varchar2(30) not null,
+gender varchar2(30) not null,
+a_birth varchar2(30) not null,
+talent varchar2(30) not null,
+agency varchar2(30) not null
+);
+
+create table tbl_artist (
+artist_id char(4) not null primary key,
+artist_name varchar2(20) not null,
+artist_gender char(1) not null,
+artist_birth char(8) not null,
+talent char(1) not null,
+agency varchar2(20) not null
+);
+select * from tbl_artist;
+
+create table tbl_memto (
+mento_id char(4) not null primary key,
+mento_name varchar2(20) not null
+);
+
+insert into tbl_memto values('J001','함멘토');
+insert into tbl_memto values('J002','박멘토');
+insert into tbl_memto values('J003','장멘토');
+select * from tbl_memto;
+
+create table tbl_point (
+serial_no number(8) not null primary key,
+artist_id char(4) not null,
+mento_id char(4) not null,
+point number(3) not null,
+CONSTRAINT fk_artist_id foreign key(artist_id) references tbl_artist (artist_id),
+CONSTRAINT fk_mento_id foreign key(mento_id) references tbl_memto (mento_id)
+);
+insert into tbl_point values('2019001','A001','J001','78');
+insert into tbl_point values ('2019002', 'A001', 'J002', '76');
+insert into tbl_point values ('2019003', 'A001', 'J003', '70');
+insert into tbl_point values ('2019004', 'A002', 'J001', '80');
+insert into tbl_point values ('2019005', 'A002', 'J002', '72');
+insert into tbl_point values ('2019006', 'A002', 'J003', '78');
+insert into tbl_point values ('2019007', 'A003', 'J001', '90');
+insert into tbl_point values ('2019008', 'A003', 'J002', '92');
+insert into tbl_point values ('2019009', 'A003', 'J003', '88');
+insert into tbl_point values ('2019010', 'A004', 'J001', '96');
+insert into tbl_point values ('2019011', 'A004', 'J002', '90');
+insert into tbl_point values ('2019012', 'A004', 'J003', '98');
+insert into tbl_point values ('2019013', 'A005', 'J001', '88');
+insert into tbl_point values ('2019014', 'A005', 'J002', '86');
+insert into tbl_point values ('2019015', 'A005', 'J003', '86');
+select * from tbl_point;
+
+

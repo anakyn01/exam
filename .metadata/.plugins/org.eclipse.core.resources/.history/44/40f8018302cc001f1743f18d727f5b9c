@@ -1,0 +1,16 @@
+package common;
+
+import java.sql.Connection;
+
+public class DBConnection {
+	public static Connection getConnection() {//장치드라이버
+		Connection con = null;
+		try {
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return con;
+	}
+
+}
