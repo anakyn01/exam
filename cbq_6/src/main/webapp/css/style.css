@@ -1,0 +1,95 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+a{
+	text-decoration: none;
+	color: inherit;
+}
+header{
+	background-color:#004080;
+	color:#fff;
+}
+header h1{
+	text-align: center;
+	padding: 50px 0;
+}
+nav{
+	background-color: #9fcfff;
+	height: 60px;
+}
+nav ul{
+	list-style: none;
+	text-align: center;
+	width: 1000px;
+	margin: 0 auto;
+}
+nav ul li{
+	float: left;
+	width: 200px;
+	line-height: 60px;
+	font-size: 18px;
+	font-weight: 600;
+}
+a.on{
+	color: #0061c1;
+}
+section{
+	padding: 40px 10px;
+}
+section h2{
+	text-align: center;
+	margin-bottom: 20px;
+}
+section p{
+	padding: 10px 0;
+	font-size: 18px;
+}
+table{
+	margin: 0 auto;
+	width: 60%;
+	text-align: center;
+}
+th{
+	background-color:#f4f4f4;
+	padding: 5px;
+}
+td{
+	padding: 5px 0;
+}
+.td_left{
+	text-align: left;
+	padding-left: 5px;
+}
+.td_right{
+	text-align: right;
+	padding-right: 5px;
+}
+table input[type="text"],
+table select{
+	height: 28px;
+	padding: 3px;
+}
+table input[type="radio"]{
+	margin-right: 3px;	
+}
+table.insert{
+	width:600px;
+}
+.inputLong{
+	width: 250px;
+}
+
+input[type="button"]{
+	padding: 3px 5px;
+}
+footer{
+	background-color: #0061c1;
+	text-align: center;
+	height: 100px;
+}
+footer p{
+	line-height: 100px;
+	color: white;
+}

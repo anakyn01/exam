@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"
+import = "dao.*, dto.*, java.util.*"    
+%>
 <jsp:include page="include/header.jsp"/>
 
 <section>
@@ -25,7 +27,22 @@
 <th>대표전화</th>
 </tr>
 </thead>
-
+<% DAO dao = new DAO();//객체생성
+ArrayList<DTO> dtos = dao.getMemberList();
+%>
+<tbody>
+<% for (DTO dto : dtos){%>
+<tr>
+<td><%=dto.getM_no() %></td>
+<td><%=dto.getM_name() %></td>
+<td><%=dto.getP_name() %></td>
+<td><%=dto.getP_school() %></td>
+<td><%=dto.getM_jumin() %></td>
+<td><%=dto.getM_city() %></td>
+<td><%=dto.getP_tel1() %> - <%=dto.getP_tel2() %> - <%=dto.getP_tel3() %></td>
+</tr>
+<%} %>
+</tbody>
 </table>
 
 </section>

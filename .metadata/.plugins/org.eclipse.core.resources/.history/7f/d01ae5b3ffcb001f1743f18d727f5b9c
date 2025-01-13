@@ -1,5 +1,0 @@
-@charset "UTF-8";
-*{margin:0; padding:0; box-sizing:border-box;}
-a{text-decoration:none; color:#5e5e5e;}
-header{background-color:#8080c0;}
-header h1{padding:40px 0; text-align:center; color:white;}

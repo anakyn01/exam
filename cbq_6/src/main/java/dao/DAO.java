@@ -16,7 +16,11 @@ public class DAO {
 	//후보조회
 	public ArrayList<DTO> getMemberList(){
 	 ArrayList<DTO> dtos = new ArrayList<>();
-	 String query="";
+	 String query="select m.m_no, m.m_name, p.p_name, decode(m.p_school,'1','고졸','2','학사',decode(m.p_school,'3','석사','박사'))as p_school,\r\n"
+	 		+ " m.m_jumin, m.m_city, p.p_tel1, p.p_tel2, p.p_tel3\r\n"
+	 		+ "from tbl_member_202005 m, tbl_party_202005 p\r\n"
+	 		+ "where m.p_code=p.p_code\r\n"
+	 		+ "order by m.m_no asc";
 	 try {
 		 con = DBConnection.getConnection();
 		 ps = con.prepareStatement(query);
@@ -28,7 +32,7 @@ public class DAO {
 			 String p_school = rs.getString("p_school");
 			 String m_jumin = rs.getString("m_jumin");
 			 String m_city = rs.getString("m_city");
-			 String p_tel1 = rs.getString("m_tel1");
+			 String p_tel1 = rs.getString("p_tel1");
 			 String p_tel2= rs.getString("p_tel2");
 			 String p_tel3= rs.getString("p_tel3");
 			 
@@ -54,9 +58,10 @@ public class DAO {
 	}
 	
 	//투표하기
-	public int doVote(){
+	public int doVote(String v_jumin, String v_name, String m_no, String v_time, String v_area, String v_confirm){
 		 int re = 0;
-		 String query="";
+		 String query="insert into tbl_vote_202005"
+		 		+ " values('"+v_jumin+"','"+v_name+"','"+m_no+"','"+v_time+"', '"+v_area+"','"+v_confirm+"')";
 		 try {
 			 con = DBConnection.getConnection();
 			 ps = con.prepareStatement(query);
@@ -72,7 +77,21 @@ public class DAO {
 	//투표검수조회
 	public ArrayList<DTO> getVoteList(){
 		 ArrayList<DTO> dtos = new ArrayList<>();
-		 String query="";
+		 String query="select v.v_name, a.v_birth, 2022-to_number(substr(a.v_birth,1,4))v_age, decode(a.gender,'1','남','여')v_gender, v.m_no,\r\n" + 
+					"       concat(concat(substr(v.v_time,1,2),':'),substr(v.v_time,3,4))v_time, decode(v.v_confirm,'Y','확인','미확인')v_confirm\r\n" + 
+					" from tbl_vote_202005 v,\r\n" + 
+					"    (select v_jumin, to_char(to_date(substr(v_jumin,1,6)),'yyyy\"년\"MM\"월\"dd\"일생\"')v_birth, substr(v_jumin,7,1)gender from tbl_vote_202005) a\r\n" + 
+					" where v.v_jumin = a.v_jumin and v_area='제1투표장'";
+/*
+v.v_name : 유권자의 이름
+a.v_birth : 생년월일을 형식으로 표현 'yyyy\"년\"MM\"월\"dd\"일생\"'
+2022-to_number(substr(a.v_birth,1,4))v_age => 2022년 유권자 연령은 2022년에서 생년월일(년도)의 처음 4글자를 뺀값
+decode(a.gender, '1','남', '여')v_gender => '1','남성 그외 여성
+v.m_no => 투표의 행위를 식별하는 식별자
+concat(concat(substr(v.v_time,1,2),':'),substr(v.v_time,3,4))v_time
+하위 문자열 연산을 사용하여 형식화된 투표시간 HH:MM
+decode(v.v_confirm, 'Y','확인','미확인')v_confirm => 투표의 확인상태는 '확인', '미확인'
+*/
 		 try {
 			 con = DBConnection.getConnection();
 			 ps = con.prepareStatement(query);
@@ -109,7 +128,12 @@ public class DAO {
 	//후보자등수
 	public ArrayList<DTO> getRanking(){
 		 ArrayList<DTO> dtos = new ArrayList<>();
-		 String query="";
+			String query="select m_no, m_name, count, round(count/aa*100,2)as per from(\r\n" + 
+					" select m.m_no, m.m_name, count(m_name)as count, a.aa\r\n" + 
+					" from tbl_member_202005 m, tbl_vote_202005 v, (select count(*)as aa from tbl_vote_202005 where v_confirm='Y')a\r\n" + 
+					" where m.m_no=v.m_no and v_confirm = 'Y'\r\n" + 
+					" group by m.m_no, m.m_name, a.aa\r\n" + 
+					" order by count desc)";
 		 try {
 			 con = DBConnection.getConnection();
 			 ps = con.prepareStatement(query);
