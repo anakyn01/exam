@@ -17,6 +17,6 @@
 <li><a href="two.jsp">심사점수등록</a></li>
 <li><a href="three.jsp">심사점수조회</a></li>
 <li><a href="four.jsp">참가자등수조회</a></li>
-<li><a href="/index.jsp">홈으로</a></li>
+<li><a href="/cbq_8/index.jsp">홈으로</a></li>
 </ul>
 </nav>

@@ -11,6 +11,10 @@
 		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="E:\dev\workspace\2_two\exam\prevention_12345678"/>
+			<item value="E:\dev\workspace\2_two\exam\hrd_123456878"/>
+			<item value="E:\dev\workspace\2_two\exam\gasstation_12345678"/>
+			<item value="E:\dev\workspace\2_two\exam\olympics_12345678"/>
 			<item value="E:\dev\workspace\2_two\exam\cbq_3"/>
 			<item value="E:\dev\workspace\2_two\exam\community"/>
 			<item value="E:\dev\workspace\2_two\exam\cbq_1"/>

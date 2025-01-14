@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="prevention_12345678">
+        
+    <wb-module deploy-name="cbq_11_covid">
+                
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+                
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-        <property name="context-root" value="prevention_12345678"/>
-        <property name="java-output-path" value="/prevention_12345678/build/classes"/>
+                
+        <property name="java-output-path" value="/cbq_11_covid/build/classes"/>
+        <property name="context-root" value="cbq_11_covid"/>
+            
     </wb-module>
+    
 </project-modules>

@@ -3,4 +3,7 @@
 <jsp:include page="include/header.jsp" flush="false"/>
 
 
+<jsp:include page="include/body.jsp" />
+
+
 <jsp:include page="include/footer.jsp" flush="false"/>
