@@ -3,7 +3,7 @@
 <jsp:include page="include/header.jsp" flush="false"/>
 <script src="js/js.js"></script>
 <h1>심사점수등록</h1>
-<form action="">
+<form action="" name="form">
 <table>
 <colgroup>
 <col style="width:30%"/>

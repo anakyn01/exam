@@ -1,0 +1,49 @@
+create table E08_홍길동_player(
+player_no char(4) not null primary key,
+name varchar2(20),
+birth char(8),
+nation_code char(1),
+skill_level char(1)
+);
+create table E08_홍길동_nation(
+nation_code char(1) not null primary key,
+nation_name varchar2(20)
+);
+create table E08_홍길동_skill(
+skill_level char(1) not null primary key,
+skill_name varchar2(20)
+);
+
+create table E08_홍길동_point(
+player_no char(4) not null primary key,
+point_1 number(2) not null,
+point_2 number(2) not null,
+point_3 number(2) not null,
+point_4 number(2) not null,
+total number(2),
+ave number(3)
+);
+insert into E08_홍길동_player values ('1001','신재환','19970101','K','5');
+insert into E08_홍길동_player values ('1002','신재환','19980201','C','4');
+insert into E08_홍길동_player values ('2003','신재환','19990301','J','2');
+insert into E08_홍길동_player values ('2004','신재환','20000401','A','3');
+insert into E08_홍길동_player values ('1005','신재환','20010501','P','5');
+
+insert into E08_홍길동_nation values ('1','자빠지기');
+insert into E08_홍길동_nation values ('2','옆구르기');
+insert into E08_홍길동_nation values ('3','뒤그루기');
+insert into E08_홍길동_nation values ('4','1회전넘어지기');
+insert into E08_홍길동_nation values ('5','2회전자빠지기');
+
+insert into E08_홍길동_skill values ('1','자빠지기');
+insert into E08_홍길동_skill values ('2','옆구르기');
+insert into E08_홍길동_skill values ('3','뒤그루기');
+insert into E08_홍길동_skill values ('4','1회전넘어지기');
+insert into E08_홍길동_skill values ('5','2회전자빠지기');
+
+insert into E08_홍길동_point values ('1001','9','8','9','7','24','8.4');
+insert into E08_홍길동_point values ('1002','8','10','9','6','23','7.97');
+insert into E08_홍길동_point values ('2003','10','9','8','6','23','7.82');
+insert into E08_홍길동_point values ('2004','9','10','7','7','23','7.89');
+
+
