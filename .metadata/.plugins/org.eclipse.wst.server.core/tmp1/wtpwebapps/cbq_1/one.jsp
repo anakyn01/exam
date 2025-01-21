@@ -1,12 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-import ="cbq_1.*, java.util.ArrayList"
+import ="dao.*, dto.*, java.util.*"
 %>
 <jsp:include page="include/header.jsp" flush="false" />
-
-
 <h1>입출고 내역 조회</h1>
-
 <table>
 <colgroup>
 <col style="width:10%"/>
@@ -22,26 +19,21 @@ import ="cbq_1.*, java.util.ArrayList"
 </thead>
 <tbody>
 <%
-AllDao allDao = new AllDao();//실제 사용객체 (인스턴스) 생성
-ArrayList<Product> list = allDao.getList();
-for (int i=0; i < list.size(); i++){
+request.setCharacterEncoding("UTF-8");
+DAO dao = new DAO();
+
+ArrayList<DTO> dtos = dao.getProductList();
+
+for (int k =0; k < dtos.size(); k++){
 %>
 <tr>
-<td><%=list.get(i).getP_code() %></td>
-<td><%=list.get(i).getP_name() %></td>
-<td><%=list.get(i).getP_size() %></td>
-<td><%=list.get(i).getP_incost()%></td>
-<td><%=list.get(i).getP_outcost() %></td>
+<td><%=dtos.get(k).getP_code() %></td>
+<td><%=dtos.get(k).getP_name() %></td>
+<td><%=dtos.get(k).getP_size() %></td>
+<td>￦<%=dtos.get(k).getP_incost()%></td>
+<td>￦<%=dtos.get(k).getP_outcost() %></td>
 </tr>
 <%} %>
-
-
-
-
-
-
-
-
 </tbody>
 </table>
 

@@ -2,6 +2,8 @@ package common;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DBConnection {
@@ -33,8 +35,31 @@ public class DBConnection {
 		return con;
 	}
 	
-	public static void closeDB() {
+	public static void closeDB(Connection con, PreparedStatement ps, ResultSet rs) {
+	
+		if(con != null) {
+			try {
+				con.close();
+			}catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		
+		if(ps != null) {
+			try {
+				ps.close();
+			}catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		if(rs != null) {
+			try {
+				rs.close();
+			}catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 }
