@@ -64,14 +64,14 @@ dtos.add(dto);
 	//기술레벨 가져오기
 	public String getSkill_level(String player_no) {
 		String sl = "";
-		String query="";
+		String query="select skill_level from E08_홍길동_PLAYER where player_no ='"+player_no+"' ";
 		try {
 			con = DBConnection.getConnection();
 			ps=con.prepareStatement(query);
 			rs=ps.executeQuery();
 			
 			while(rs.next()) {
-				
+				sl = rs.getString("skill_level");
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -85,7 +85,9 @@ dtos.add(dto);
 	//심사점수 등록
 public int pointSave(String player_no, int point_1, int point_2, int point_3, int point_4, int total, double realava) {
 int r = 0;
-String query="insert into E08_홍길동_point (player_no, point_1, point_2, point_3, point_4, total, realava) values (?,?,?,?,?,?,?)";
+//String query="insert into E08_홍길동_point (player_no, point_1, point_2, point_3, point_4, total, realava) values (?,?,?,?,?,?,?)";
+String query="insert into E08_홍길동_point values ('"+player_no+"','"+point_1+"','"+point_2+"','"+point_3+"',"
+        + "'"+point_4+"','"+total+"','"+realava+"')";
 		try {
 			con = DBConnection.getConnection();
 			ps=con.prepareStatement(query);

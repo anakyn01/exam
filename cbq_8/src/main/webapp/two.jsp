@@ -33,7 +33,7 @@
 </tr>
 <tr>
 <th>심사위원4</th>
-<td><input type="text" name="point_3"/>최소 1, 최대 10</td>
+<td><input type="text" name="point_4"/>최소 1, 최대 10</td>
 </tr>
 <tr>
 <td colspan="3">

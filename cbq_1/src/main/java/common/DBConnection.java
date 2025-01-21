@@ -1,0 +1,40 @@
+package common;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class DBConnection {
+	
+	public static Connection getConnection() {
+		Connection con = null;
+		boolean goIng = true;
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		}catch (ClassNotFoundException e) {
+			goIng = false;
+			System.out.println("오라클 드라이버 없음");
+			e.printStackTrace();
+		}
+		
+		//드라이버가 작동할때
+		if(goIng) {
+			String db_url = "jdbc:oracle:thin:@localhost:1521:xe";
+			String db_user = "exam_usr";
+			String db_password="1234";
+			
+			try {
+				con = DriverManager.getConnection(db_url, db_user, db_password);
+			}catch(SQLException e) {
+				System.out.println("DB 계정설정 오류!");
+				e.printStackTrace();
+			}
+		}
+		return con;
+	}
+	
+	public static void closeDB() {
+		
+	}
+
+}
