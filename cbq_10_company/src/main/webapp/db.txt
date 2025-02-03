@@ -1,0 +1,22 @@
+create table E10_황영일_employee(
+e_no char(4) not null primary key,
+e_name varchar2(20) not null,
+e_depart char(2) not null,
+e_level char(2) not null,
+e_work_place char(2),
+performance char(1),
+e_join_date char(8) not null
+);
+create table E10_황영일_depart(
+depart_code char(2) not null primary key,
+name varchar2(20) not null
+);
+create table E10_황영일_level(
+level_code char(2)  not null primary key,
+name  varchar2(20),
+salary number(8)
+);
+create table E10_황영일_work(
+work_place char(2)  not null primary key,
+name  varchar2(20)
+);
