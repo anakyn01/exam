@@ -75,7 +75,6 @@ INDEX VERSION 1.131+E:\dev\workspace\2_two\exam\.metadata\.plugins\org.eclipse.j
 1702839017.index
 137958101.index
 2031912265.index
-4139563077.index
 218389148.index
 3444550575.index
 850813425.index
