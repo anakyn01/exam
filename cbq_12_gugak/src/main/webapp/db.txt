@@ -1,0 +1,28 @@
+create table TBL_ENTRY_202106(
+ENTRY_NO char(4) not null primary key,
+ENTRY_NAME varchar2(10),
+ENTRY_JUMIN char(13),
+ENTRY_TYPE char(1),
+ENTRY_AREA varchar2(10)
+);
+create table TBL_RECORD_202106(
+ENTRY_NO char(4) not null primary key,
+SCORE1 number(3),
+SCORE2 number(3),
+SCORE3 number(3),
+SCORE4 number(3),
+SCORE5 number(3),
+S_MAX number(3),
+S_MIN number(3),
+S_TOT number(3),
+S_AVE number(6,2),
+CONSTRAINT fk_ENTRY_NO foreign key(ENTRY_NO) references TBL_ENTRY_202106 (ENTRY_NO)
+);
+create table TBL_REFEREE_202106(
+RENAME1 varchar2(10),
+RENAME2 varchar2(10),
+RENAME3 varchar2(10),
+RENAME4 varchar2(10),
+RENAME5 varchar2(10)
+);
+
