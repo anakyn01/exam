@@ -1,0 +1,21 @@
+create table exam_auto_emp(
+empno char(4) not null primary key,
+empaname varchar2(20),
+tel1 char(3),
+tel2 char(4),
+tel3 char(4),
+deptcode char(2),
+position char(1)
+);
+create table exam_auto_seat(
+seatno char(4) not null primary key,
+office varchar2(20),
+callno varchar2(10),
+useflag char(1)
+);
+create table exam_auto_contract(
+resvno char(8) primary key,
+empno varchar2(4),
+resvdate varchar2(8),
+seatno char(4)
+);
