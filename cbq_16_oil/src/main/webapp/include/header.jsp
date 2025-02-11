@@ -4,17 +4,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="css/gas.css"/>
-<title>Insert title here</title>
+<link href="css/style.css" rel="stylesheet">
+<title>주유소 관리 프로그램_</title>
 </head>
 <body>
-<header>
-(과정평가형 정보처리산업기사)주유소 관리 프로그램 Ver2020-10
-</header>
-<nav>
-<ul class="nav">
-<li><a href="one.jsp">매출등록</a></li>
-<li><a href="two.jsp">전체매출조회</a></li>
-<li><a href="three.jsp">일별매출통계</a></li>
-</ul>
-</nav>
+   <header>
+      <h1>(과정평가형 정보처리산업기사)주유소 관리 프로그램</h1>
+   </header>
+   <nav>
+      <ul>
+         <li><a href="sub1.jsp">매출등록</a></li>
+         <li><a href="sub2.jsp">전체매출조회</a></li>
+         <li><a href="sub3.jsp">일자별매출조회</a></li>
+         <li><a href="index.jsp">홈으로</a></li>
+      </ul>
+   </nav>

@@ -104,20 +104,20 @@ System.out.println("getContractList() : " + query);
 	}
 
 //예약번호 중복검사
-public int checkresvno(String resvno) {
-	int result = 0;
+public int checkResvno(String resvno) {
+	int count = 0;
 	String query = "select ";
 	try {
 		con = DBConnection.getConnection();
 		ps = con.prepareStatement(query);
-		result = ps.executeUpdate();
+		rs = ps.executeQuery();
 	}catch(Exception e) {
 		System.out.println("getContractList() : " + query);
 		e.printStackTrace();
 	}finally {
 		DBConnection.closeDB(con, ps, rs);
 	}
-	return result;
+	return count;
 }
 
 }

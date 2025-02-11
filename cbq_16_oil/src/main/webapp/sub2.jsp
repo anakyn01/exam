@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-import="java.io.PrintWriter, gas.*, java.util.ArrayList"
+import="dao.*, dto.*, java.util.*"
+%>
+<%
+DAO dao = new DAO(); ArrayList<DTO> dtos = dao.getSalesList();
+String total = dao.getTotalCost();
 %>
 <jsp:include page="include/header.jsp" flush="false"/>
 
@@ -17,22 +21,33 @@ import="java.io.PrintWriter, gas.*, java.util.ArrayList"
 </thead>
 <tbody>
 <%
-GasDAO gasDAO = new GasDAO();
-ArrayList<Money> list = gasDAO.getList2();
-for (int i=0; i < list.size(); i++){
+for(DTO dto: dtos){
 %>
 <tr>
-<td><%=list.get(i).getSalebno() %></td>
-<td><%=list.get(i).getSaleno() %></td>
-<td><%=list.get(i).getOildate() %></td>
-<td><%=list.get(i).getOiltype() %></td>
-<td><%=list.get(i).getAmount() %></td>
-<td><%=list.get(i).getPaytype() %></td>
-<td><%=list.get(i).getCustno() %></td>
-<td><%=list.get(i).getCreditcard() %></td>
-<td><%=list.get(i).getOilcost() %></td>
+<td><%=dto.getSaleno() %></td>
+<td><%=dto.getOildate() %></td>
+<td><%=dto.getOilname() %></td>
+<td><%=dto.getAmount() %></td>
+<td><%=dto.getPaytype() %></td>
+<td><%=dto.getCustname() %></td>
+<td><%=dto.getCustno() %></td>
+<td><%=dto.getCusttel1()%>-<%=dto.getCusttel2()%>-<%=dto.getCusttel3()%></td>
+<td><%=dto.getCreditcart() %></td>
+<td><%=dto.getOilcost() %></td>
 </tr>
-<%} %>
+<%}%>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td>매출총액</td>
+	<td class="td_right">\<%=total%></td>
+</tr>
 </tbody>
 
 </table>
