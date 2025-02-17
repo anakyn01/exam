@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import common.DBConnection;
 import dto.DTO;
 
+//TBL_DEPT_202201,TBL_BUY_STOCK_202201,TBL_STOCK_ITEM_202201
 public class DAO {
 	
 	Connection con = null;
@@ -17,7 +18,10 @@ public class DAO {
 	//주식 종목 조회
 	public ArrayList<DTO> getStockList(){
 		ArrayList<DTO> dtos = new ArrayList<DTO>();
-		String query="";
+String query="select stock_item_code s_code, stock_item_name s_name, stock_item_market s_market, stock_item_category s_category,\r\n"
++ " to_char(to_date(STOCK_ITEM_LISTED_DATE),'yyyy\"년\"MM\"월\"dd\"일\"')s_listed_date\r\n"
++ "from TBL_STOCK_ITEM_202201\r\n"
++ "order by stock_item_code asc";
 		try {
 			con = DBConnection.getConnection();
 			ps = con.prepareStatement(query);
@@ -51,7 +55,7 @@ dto.setS_listed_date(s_listed_date);
 	//매수등록
 public int saveStockBuy(String buy_date, String s_code, String buy_number, String buy_price, String dept_code) {
 	int result = 0;
-	String query="";
+String query="insert into TBL_BUY_STOCK_202201 values ('"+buy_date+"','"+s_code+"','"+buy_number+"','"+buy_price+"', '"+dept_code+"')";
 	try {
 		con = DBConnection.getConnection();
 		ps = con.prepareStatement(query);
@@ -68,7 +72,11 @@ public int saveStockBuy(String buy_date, String s_code, String buy_number, Strin
 //주식 매수내역 조회
 public ArrayList<DTO> getBuyList(){
 	ArrayList<DTO> dtos = new ArrayList<DTO>();
-	String query="";
+String query="select to_char(to_date(b.buy_date), 'yyyy\"년\"MM\"월\"dd\"일\"')buy_date, b.stock_item_code s_code, i.stock_item_name s_name,\r\n"
++ " to_char(b.buy_number, '999,999')buy_number, to_char(b.buy_price, '999,999')buy_price, d.dept_name\r\n"
++ "from TBL_DEPT_202201 d,TBL_BUY_STOCK_202201 b,TBL_STOCK_ITEM_202201 i\r\n"
++ "where b.stock_item_code=i.stock_item_code and b.dept_code = d.dept_code\r\n"
++ "order by buy_date asc, s_code asc";
 	try {
 		con = DBConnection.getConnection();
 		ps = con.prepareStatement(query);
@@ -103,7 +111,11 @@ dtos.add(dto);
 //부서별 주식 매수 통계
 public ArrayList<DTO> getDeptTotal(){
 	ArrayList<DTO> dtos = new ArrayList<DTO>();
-	String query="";
+String query="select dept_code, dept_name, to_char(sum(buy_number), '999,999')buy_number, to_char(sum(num), '999,999,999')total from(\r\n"
++ " select b.dept_code, d.dept_name, b.buy_number, b.buy_price, to_number(b.buy_number)*to_number(b.buy_price)num\r\n"
++ "from TBL_DEPT_202201 d,TBL_BUY_STOCK_202201 b\r\n"
++ "where b.dept_code = d.dept_code) group by dept_code, dept_name\r\n"
++ "order by dept_code asc";
 	try {
 		con = DBConnection.getConnection();
 		ps = con.prepareStatement(query);

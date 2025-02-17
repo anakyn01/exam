@@ -1,0 +1,22 @@
+create table TBL_CUSTINFO_202010(
+custno char(4) not null primary key,
+custname varchar2(20),
+custjumin char(13),
+custtel1 char(3),
+custtel2 char(4),
+custtel3 varchar2(4)
+);
+create table TBL_OILINFO_202010(
+oiltype char(1) not null primary key,
+oilname varchar2(20)
+);
+create table TBL_SALEINFO_202010(
+saleno char(4) not null primary key,
+oildate char(8),
+oiltype char(1),
+amount number(4),
+paytype char(1),
+custno char(4),
+creditcard char(16),
+oilcost number(7)
+);

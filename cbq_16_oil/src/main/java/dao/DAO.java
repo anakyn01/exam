@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import common.DBConnection;
 import dto.DTO;
 
+/*
+TBL_CUSTINFO_202010,TBL_OILINFO_202010,TBL_SALEINFO_202010
+*/
 public class DAO {
 
 	Connection con = null;
@@ -17,7 +20,9 @@ public class DAO {
 	//매출등록
 public int saveOilSale(String saleno, String oildate, String oiltype, String amount, String paytype, String creditcart, String custno, String oilcost) {
 		int result = 0;
-		String query="";
+String query="insert into TBL_SALEINFO_202010\r\n"
++ "(saleno,oildate,oiltype,amount,paytype,creditcart,custno,oilcost)\r\n"
++ "values('"+saleno+"','"+oildate+"','"+oiltype+"','"+amount+"','"+paytype+"','"+creditcart+"','"+custno+"','"+oilcost+"')";
 		try {
 			con = DBConnection.getConnection();
 			ps=con.prepareStatement(query);
@@ -32,7 +37,13 @@ public int saveOilSale(String saleno, String oildate, String oiltype, String amo
 	//전체 매출조회
 public ArrayList<DTO> getSalesList(){
 		ArrayList<DTO> dtos = new ArrayList<DTO>();
-		String query ="";
+String query =""
++ ""
++ ""
++ ""
++ "from TBL_CUSTINFO_202010 c,TBL_OILINFO_202010 o,TBL_SALEINFO_202010 s"
++ "where s.oiltype=o.oiltype and s.custno=c.custno(+)"
++ "order by saleno asc";
 		try {
 con = DBConnection.getConnection();
 ps=con.prepareStatement(query);
@@ -78,7 +89,12 @@ while(rs.next()) {
 	//매출 총액
 	public String getTotalCost() {
 		String total = "";
-		String query="";
+String query="select "
++ ""
++ ""
++ ""
++ "from TBL_CUSTINFO_202010 c,TBL_OILINFO_202010 o,TBL_SALEINFO_202010 s"
++ "";
 		try {
 			con = DBConnection.getConnection();
 			ps=con.prepareStatement(query);
@@ -97,7 +113,12 @@ while(rs.next()) {
 	//일 매출
 	public ArrayList<DTO> getDateSales(){
 		ArrayList<DTO> dtos = new ArrayList<DTO>();
-		String query ="";
+String query =""
++ ""
++ "from TBL_OILINFO_202010 o,TBL_SALEINFO_202010 s"
++ ""
++ ""
++ "";
 		try {
 			con = DBConnection.getConnection();
 			ps=con.prepareStatement(query);

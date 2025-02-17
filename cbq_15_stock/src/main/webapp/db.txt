@@ -1,0 +1,19 @@
+create table TBL_DEPT_202201(
+DEPT_CODE char(3) not null primary key,
+DEPT_NAME varchar2(24),
+DEPT_OFFR char(10)
+);
+create table TBL_BUY_STOCK_202201(
+BUY_DATE char(8)not null,
+STOCK_ITEM_CODE char(6),
+BUY_NUMBER number,
+BUY_PRICE number,
+DEPT_CODE char(3)
+);
+create table TBL_STOCK_ITEM_202201(
+STOCK_ITEM_CODE char(6) primary key,
+STOCK_ITEM_NAME varchar2(24),
+STOCK_ITEM_MARKET varchar2(10),
+STOCK_ITEM_CATEGORY char(12),
+STOCK_ITEM_LISTED_DATE char(8)
+);

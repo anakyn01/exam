@@ -3,7 +3,8 @@
 <jsp:include page="include/header.jsp"/>
 <script src="js/js.js"></script>
 <section>
-<h2></h2>
+<h2>주식 매수 등록</h2>
+<form name="form">
 <table border="1">
 <tr>
 	<th>매수일자</th>
@@ -61,6 +62,7 @@
 	</td>
 </tr>
 </table>
+</form>
 </section>
 
 <jsp:include page="include/footer.jsp"/>
