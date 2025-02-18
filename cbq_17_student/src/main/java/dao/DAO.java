@@ -17,7 +17,12 @@ public class DAO {
 	//전체점수 조회
 	public ArrayList<DTO> getAllScore(){
 		ArrayList<DTO> dtos = new ArrayList<DTO>();
-		String query="";
+String query="select st.studentid s_id, st.studentname s_name, decode(substr(st.jumin,8,1),'1','남자','3','남자','여자')as gender,\r\n" + 
+"       sb.subjectcode sbj_code, sb.subjectname sbj_name, sb.professorname p_name, decode(sb.classifiaction,'01','전공필수','02','전공선택','03','교양필수','교양선택')classf,\r\n" + 
+"       g.mid, g.final, g.attend, g.report, g.etc, round((mid*0.3)+(final*0.3)+(report*0.2)+(attend*0.1)+(etc*0.1),2)total\r\n" + 
+" from TBL_GRADE_202205 g,TBL_SUBJECT_202205 sb, TBL_STUDENT_202205 st\r\n" + 
+" where st.studentid = g.studentid and sb.subjectcode = g.subjectcode\r\n" + 
+" order by st.studentid asc, sb.subjectcode desc";
 		try {
 			con = DBConnection.getConnection();
 			ps = con.prepareStatement(query);
@@ -76,7 +81,7 @@ while(rs.next()) {
 	//점수등록
 public int saveScore(String s_id,String sbj_code,int mid,int finals,int report,int attend,int etc) {
 		int rst = 0;
-		String query = "";
+		String query=" insert into TBL_GRADE_202205 values ('"+s_id+"','"+sbj_code+"',"+mid+","+finals+","+report+","+attend+","+etc+")";
 		try {
 			con = DBConnection.getConnection();
 			ps = con.prepareStatement(query);
@@ -93,7 +98,13 @@ public int saveScore(String s_id,String sbj_code,int mid,int finals,int report,i
 	//개인성적조회
 	public ArrayList<DTO> getStudentScore(){
 		ArrayList<DTO> dtos = new ArrayList<DTO>();
-		String query="";
+		String query="select studentid, studentname, course, count(*)count, to_char(sum(total),'FM900.0')total, to_char(round(avg(total),1),'FM00.0')avg from(\r\n" + 
+				" select s.studentid, s.studentname, decode(s.course,'AD','전문학사','BD','학사','CD','석사','박사')course,\r\n" + 
+				"       round((mid*0.3)+(final*0.3)+(report*0.2)+(attend*0.1)+(etc*0.1),2)total\r\n" + 
+				" from TBL_GRADE_202205 g, TBL_STUDENT_202205 s\r\n" + 
+				" where g.studentid = s.studentid)\r\n" + 
+				" group by studentid, studentname, course\r\n" + 
+				" order by studentid desc";
 		try {
 			con = DBConnection.getConnection();
 			ps = con.prepareStatement(query);

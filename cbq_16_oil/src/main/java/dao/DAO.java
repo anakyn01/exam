@@ -34,15 +34,15 @@ String query="insert into TBL_SALEINFO_202010\r\n"
 		}
 		return result;
 	}
-	//전체 매출조회
+//전체 매출조회
 public ArrayList<DTO> getSalesList(){
-		ArrayList<DTO> dtos = new ArrayList<DTO>();
-String query =""
-+ ""
-+ ""
-+ ""
-+ "from TBL_CUSTINFO_202010 c,TBL_OILINFO_202010 o,TBL_SALEINFO_202010 s"
-+ "where s.oiltype=o.oiltype and s.custno=c.custno(+)"
+ArrayList<DTO> dtos = new ArrayList<DTO>();
+String query ="select s.saleno, to_char(to_date(s.oildate), 'yyyy\"년\"MM\"월\"dd\"일\"')oildate, o.oilname, s.amount,\r\n "
++ "	decode(s.paytype, '1', '현금', '카드')paytype, nvl(c.custname,'비회원')custname, nvl(c.custno,'비회원')custno,\r\n"
++ "	nvl(c.custtel1,'000')custtel1, nvl(c.custtel2,'0000')custtel2,  nvl(c.custtel3,'0000')custtel3,\r\n"
++ "	nvl(s.creditcart, ' ')creditcart, to_char(s.oilcost, '999,999')oilcost\r\n "
++ "from TBL_CUSTINFO_202010 c,TBL_OILINFO_202010 o,TBL_SALEINFO_202010 s\r\n"
++ "where s.oiltype=o.oiltype and s.custno=c.custno(+)\r\n"
 + "order by saleno asc";
 		try {
 con = DBConnection.getConnection();
@@ -88,13 +88,14 @@ while(rs.next()) {
 	}
 	//매출 총액
 	public String getTotalCost() {
-		String total = "";
-String query="select "
-+ ""
-+ ""
-+ ""
-+ "from TBL_CUSTINFO_202010 c,TBL_OILINFO_202010 o,TBL_SALEINFO_202010 s"
-+ "";
+String total = "";
+String query="select to_char(sum(oilcost), '999,999') total from\r\n "
++ "(select s.saleno, to_char(to_date(s.oildate), 'yyyy\"년\"MM\"월\"dd\"일\"')oildate, o.oilname, s.amount,\r\n"
++ "	decode(s.paytype, '1', '현금', '카드')paytype, nvl(c.custname,'비회원')custname, nvl(c.custno,'비회원')custno,\r\n"
++ "	nvl(c.custtel1,'000')custtel1, nvl(c.custtel2,'0000')custtel2,  nvl(c.custtel3,'0000')custtel3,\r\n"
++ "	nvl(s.creditcart, ' ')creditcart, s.oilcost\r\n "
++ "from TBL_CUSTINFO_202010 c,TBL_OILINFO_202010 o,TBL_SALEINFO_202010 s\r\n"
++ "where s.oiltype=o.oiltype and s.custno=c.custno(+))";
 		try {
 			con = DBConnection.getConnection();
 			ps=con.prepareStatement(query);
@@ -113,12 +114,12 @@ String query="select "
 	//일 매출
 	public ArrayList<DTO> getDateSales(){
 		ArrayList<DTO> dtos = new ArrayList<DTO>();
-String query =""
-+ ""
-+ "from TBL_OILINFO_202010 o,TBL_SALEINFO_202010 s"
-+ ""
-+ ""
-+ "";
+String query ="select oildate, oilname, count(*)count, to_char(sum(oilcost),'999,999')oilcost from(\r\n"
++ "select to_char(to_date(s.oildate),'yyyy\"년\"MM\"월\"dd\"일\"')oildate, o.oiltype,o.oilname, s.oilcost\r\n"
++ "from TBL_OILINFO_202010 o,TBL_SALEINFO_202010 s\r\n"
++ "where s.oiltype=o.oiltype)\r\n"
++ "group by oildate, oilname, oiltype\r\n"
++ "order by oildate asc, oiltype desc";
 		try {
 			con = DBConnection.getConnection();
 			ps=con.prepareStatement(query);
