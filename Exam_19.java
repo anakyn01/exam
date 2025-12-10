@@ -5,6 +5,10 @@
 Child에 compute()가 실행된다
 
 동적 바인딩(Dynamic Binding)
+
+숫자가 1이하이면 그냥 그 숫자를 바로 반환
+숫자가 2이상이면 자기 자신을 두번 부른다
+하나는 num -1 하나는 num -3
 */
 
 class Parent{
