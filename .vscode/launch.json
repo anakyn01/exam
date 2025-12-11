@@ -3,6 +3,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Ovr_19",
+      "request": "launch",
+      "mainClass": "Ovr_19",
+      "projectName": "exam_1bf6d666"
+    },
+    {
+      "type": "java",
       "name": "Exam_14",
       "request": "launch",
       "mainClass": "Exam_14",
